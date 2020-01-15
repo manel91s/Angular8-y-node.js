@@ -1,0 +1,52 @@
+
+<h1>{{titulo}}</h1>
+
+<h5>**********Two data Binding**********</h5>
+<!--Con ngmodel accedemos al atributo ruedas del modelo y podemos 
+cambiarle los valores de forma radiactiva en la vista-->
+<input type="text" [(ngModel)]="ruedas"><br><br>
+<textarea  name="" id="" cols="20" rows="5">{{ruedas}}</textarea><br>
+<button (click)='alertRuedas()'>Enviar</button>
+
+
+<ul>
+
+    
+    <!--Declaramos una variable nombres que vaya sumando la iteraccion del array coleccion-->
+    <li [ngStyle]="{color: color}" *ngFor="let nombres of coleccion">
+        {{nombres.nombre}} - {{nombres.apellidos}} -º {{nombres.calle}} - <strong [ngClass]="{masde15: nombres.numero>15}">{{nombres.numero}}</strong>
+        <!--Directiva de condición IF-->
+        <span *ngIf="nombres.numero<20" 
+        [style.background]="nombres.numero<20 ? 'green': 'transparent' "
+        [style.color]="nombres.numero<20 ? 'white' : 'black'">
+         GANADOR!</span></li>      
+</ul>
+
+<h3>Apellidos unicos en el torneo</h3>
+
+
+<p>Añadir apellido</p>
+<p>{{mi_apellido}}</p>
+<input type="text" [(ngModel)]="mi_apellido"><button (click)="addApellido()">Enviar</button>
+<button (click)="getApellido()">Mostrar</button>
+<!--Directiva de condicion de bucle for-->
+<ul>
+    <!--Creamos un evento click y una funciona y le pasamos el indice para borrarlo
+    -->
+<li *ngFor="let soloap of soloApellidos; let indice = index">{{indice + " - " + soloap}}<button (click)="borrarApellido(indice)">Borrar</button></li>
+</ul>
+
+
+<!--Directiva de condicion de Switch-->
+<h3>Ejemplo de colores directiva de condicion Switch</h3>
+
+ <ul [ngSwitch]="fondoColor">
+     <input type="text" [(ngModel)]="fondoColor">
+    <li *ngSwitchCase="'yellow'">El color predominante es <span style="background:yellow">Amarillo</span></li>
+    <li *ngSwitchCase="'red'">El color predominante es <span style="background:red">Rojo</span></li>
+    <li *ngSwitchCase="'green'">El color predominante es <span style="background: green">green</span></li>
+
+</ul>
+
+
+

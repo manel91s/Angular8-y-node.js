@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body >
+
+  <!--Añadimos la directiva de estilos de angular y le asignamos 
+    al estilo la propiedad color que viene de los atributos de la clase appcomponent-->
+
+    <!--Podemos estilizarlo como si se tratase de un json -->
+
+  <h1>{{title}}</h1>
+  <div [ngStyle]="{
+                   background: color,
+                   padding:'20px'
+                  }">
+  
+    <nav>
+      <!--routerlink especificamos el componente a cargar que especifiquemos desde el apartado de routes 
+      y routerlinkactive es para resaltar en que opcion del menu nos encontramos-->
+      <a [routerLink]="['/home']" [routerLinkActive]="['active']"> Home </a>&nbsp;
+      <a [routerLink]="['/coches']" [routerLinkActive]="['active']"> Coches </a>&nbsp;
+      <a [routerLink]="['/formula1']" [routerLinkActive]="['active']"> Formula1 </a>&nbsp;
+      <a [routerLink]="['/motos']" [routerLinkActive]="['active']"> motos </a>&nbsp;
+      <a [routerLink]="['/externo']" [routerLinkActive]="['active']"> Externo</a>&nbsp;
+      <a [routerLink]="['/contacto']" [routerLinkActive]="['active']"> Contacto</a>&nbsp;
+    </nav>
+    <!--router-outlet es para activar las routas que emos creado en app.routing.ts -->
+    <router-outlet></router-outlet>
+    
+</div>
+  
+</body>
+</html>
+
+
+

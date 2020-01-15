@@ -1,0 +1,31 @@
+<h2>Contacto</h2>
+
+<!--Los atributos de las etiquetas con '#' delante son variables creadas que pueden servir para validaciones-->
+<!--ngSubmit sirve para lanzar el evento al pulsar enviar-->
+<!--Le pasamos por parametro la variable del formulario al metodo onSubmit para despues limpiar el formulario-->
+<form #formContacto="ngForm" (ngSubmit)="onSubmit(formContacto)">
+    <label for="nombre">Nombre</label> <br/>
+    
+    
+    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required><span *ngIf="nombre.touched && !nombre.valid"><!--Validar campo de formulario " si nombre a sido tocado 'touched' y no es valido que parezca el mensaje"-->
+        El nombre es obligatorio
+    </span><br/>
+    
+    <label for="apelldios">Apellidos</label><br/>
+    <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" required><span *ngIf="apellidos.touched && !apellidos.valid"><!--Validar campo de formulario " si nombre a sido tocado 'touched' y no es valido que parezca el mensaje"-->
+        El apellido es obligatorio
+    </span><br/>
+    <label for="email">Email</label><br/>
+    <input type="text" name="email" #email="ngModel" [(ngModel)]="usuario.email" required><span *ngIf="email.touched && !email.valid"><!--Validar campo de formulario " si nombre a sido tocado 'touched' y no es valido que parezca el mensaje"-->
+        El email es obligatorio
+    </span><br/>
+    <label for="mensaje">Mensaje</label><br/>
+    <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="usuario.mensaje" required></textarea><span *ngIf="mensaje.touched && !mensaje.valid"><!--Validar campo de formulario " si nombre a sido tocado 'touched' y no es valido que parezca el mensaje"-->
+        El mensaje es obligatorio
+    </span><br/>
+
+    <!--Permitir enviar el formulario cuando todos los campos sean validos-->
+    <input type="submit" value="Enviar" [disabled]="!formContacto.form.valid">
+
+</form>
+
